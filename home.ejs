@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body>
+  <h1>All Customers</h1>
+  <ul>
+    <% customers.forEach(customer => { %>
+      <li>
+        <a href="/view-customer/<%= customer._id %>"><%= customer.name %></a>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Customer</title>
+</head>
+<body>
+  <h1><%= customer.name %></h1>
+  <p>Email: <%= customer.email %></p>
+  <p>Balance: <%= customer.balance %></p>
+  
+  <h2>Transfer Money</h2>
+  <form action="/transfer" method="post">
+    <input type="hidden" name="from" value="<%= customer._id %>">
+    <label for="to">Transfer To:</label>
+    <select name="to" id="to">
+      <% customers.forEach(cust => { %>
+        <% if (cust._id != customer._id) { %>
+          <option value="<%= cust._id %>"><%= cust.name %></option>
+        <% } %>
+      <% }) %>
+    </select>
+    <label for="amount">Amount:</label>
+    <input type="number" name="amount" id="amount" required>
+    <button type="submit">Transfer</button>
+  </form>
+
+  <a href="/">Back to Home</a>
+</body>
+</html>
